@@ -20,6 +20,6 @@ A project that contains most of the Graph Algorithms.
 - Run
 
 
-### Please note that not all of the algorithms are optimised (i.e Hamiltonian,...). If you have any suggestions, please do a pull request. I would appreciate it  
+### Please note that not all of the algorithms are optimised (i.e Hamiltonian,...). If you have any suggestions, please do a pull request. I would appreciate it.  
 
 ### Bugs are expected, please note that I'm not an expert in Graph Theory, things might go wrong. If you want to support, just do a pull request.  
