@@ -1,5 +1,7 @@
 namespace GraphProject;
 
+// TODO: Implement Boykov-Kolmogorov approach
+
 public partial class Graph
 {
     
