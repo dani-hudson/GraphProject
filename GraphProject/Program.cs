@@ -50,6 +50,7 @@ class Program
         graph.Fulkerson();
     }
 
+    // These will create an .txt file, make sure that the path you're using got the right permission to read and write.
     static void CreateSampleGraphFile(string filename)
     {
         string[] lines =
