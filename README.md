@@ -17,7 +17,14 @@ A project that contains most of the Graph Algorithms.
 - Download this project  
 - Use either Visual Studio or Jetbrain Rider, open the solution file
 - Build the project
-- Run
+- Run  
+
+## TODO
+- Implement Boykov-Kolmogorov approach.
+- Code cleanup.  
+- Use more optimised approach to avoid confusion.  
+
+
 
 
 ### Please note that not all of the algorithms are optimised (i.e Hamiltonian,...). If you have any suggestions, please do a pull request. I would appreciate it.  
