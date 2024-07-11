@@ -22,16 +22,17 @@ public partial class Graph
             int u = MinKey(key, mstSet);
             mstSet[u] = true;
 
-            foreach (int v in adj[u])
+            for (int v = 0; v < vertices; v++)
             {
-                if (!mstSet[v] && adj[u].Contains(v) && key[v] > 1) // weight 1 for all edges
+                if (weights[u, v] > 0 && !mstSet[v] && weights[u, v] < key[v])
                 {
                     parent[v] = u;
-                    key[v] = 1;
+                    key[v] = weights[u, v];
                 }
             }
         }
-        PrintMST(parent);
+
+        PrintMST(parent, key);
     }
 
     private int MinKey(int[] key, bool[] mstSet)
@@ -50,11 +51,17 @@ public partial class Graph
         return minIndex;
     }
 
-    private void PrintMST(int[] parent)
+    private void PrintMST(int[] parent, int[] key)
     {
         Console.WriteLine("Edge \tWeight");
-        for(int i =1 ; i<vertices; i++)
-            Console.WriteLine($"{parent[i]} - {i}\t1");
+        int mstWeight = 0;
+        for (int i = 1; i < vertices; i++)
+        {
+            Console.WriteLine($"{parent[i]} - {i}\t{key[i]}");
+            mstWeight += key[i];
+        }
+
+        Console.WriteLine("Weight of the MST: " + mstWeight);
     }
 
     public void Kruskal()
@@ -62,14 +69,16 @@ public partial class Graph
         var edges = new List<Edge>();
         for (int i = 0; i < vertices; i++)
         {
-            foreach (int j in adj[i])
+            for (int j = i + 1; j < vertices; j++)
             {
-                if(i<j) // avoid duplicates.
-                    edges.Add((new Edge(i,j,1))); // weight 1 for all edges
+                if (weights[i, j] > 0)
+                {
+                    edges.Add(new Edge(i, j, weights[i, j]));
+                }
             }
         }
         
-        edges.Sort((a,b) => a.weight.CompareTo(b.weight));
+        edges.Sort();
 
         var disjoinSet = new DisjoinSet(vertices);
         var result = new List<Edge>();

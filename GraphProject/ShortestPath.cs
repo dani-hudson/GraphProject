@@ -22,8 +22,8 @@ public partial class Graph
 
             foreach (int v in adj[x])
             {
-                if (!sptSet[v] && dist[x] != int.MaxValue && dist[x] + 1 < dist[v])
-                    dist[v] = dist[x] + 1;
+                if (!sptSet[v] && dist[x] != int.MaxValue && dist[x] + weights[x,v] < dist[v])
+                    dist[v] = dist[x] + weights[x,v];
             }
         }
         
@@ -68,8 +68,8 @@ public partial class Graph
             {
                 foreach (int v in adj[x])
                 {
-                    if (dist[x] != int.MaxValue && dist[x] + 1 < dist[v])
-                        dist[v] = dist[x] + 1;
+                    if (dist[x] != int.MaxValue && dist[x] + weights[x, v] < dist[v])
+                        dist[v] = dist[x] +weights[x,v];
                 }
             }
         }
@@ -78,7 +78,7 @@ public partial class Graph
         {
             foreach (int v in adj[x])
             {
-                if (dist[x] != int.MaxValue && dist[x] + 1 < dist[v])
+                if (dist[x] != int.MaxValue && dist[x] + weights[x, v] < dist[v])
                 {
                     Console.WriteLine("Graph contains negative weight cycle.");
                     return;

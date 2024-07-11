@@ -3,7 +3,7 @@ namespace GraphProject;
 public partial class Graph
 {
 
-    private class Edge
+    private class Edge : IComparable<Edge>
     {
         public int src, dest, weight;
 
@@ -12,6 +12,11 @@ public partial class Graph
             this.src = src;
             this.dest = dest;
             this.weight = weight;
+        }
+
+        public int CompareTo(Edge other)
+        {
+            return weight.CompareTo(other.weight);
         }
     }
     public bool IsUndirected()

@@ -12,9 +12,10 @@ public partial class Graph
 
         for (int u = 0; u < vertices; u++)
         {
-            for (int v = 0; v < vertices; v++)
-                // assuming capacity 1 for all edges.
-                rGraph[u, v] = adj[u].Contains(v) ? 1 : 0;
+            foreach(int v in adj[u])
+            {
+                rGraph[u,v] = capacities[u,v];
+            }
         }
 
         int s = 0; // source is vertex 0
@@ -73,5 +74,20 @@ public partial class Graph
         }
 
         return visited[t];
+    }
+
+    public void GrowTree()
+    {
+        
+    }
+
+    public void Adopt()
+    {
+
+    }
+
+    public void BoykovKolmogorov()
+    {
+
     }
 }
